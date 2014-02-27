@@ -2,8 +2,8 @@
 
 ##Learning Competencies
 
-* Recursion
-* Working with algorithms
+* Write recursive methods
+* Implement simple mathematical algorithms in Ruby
 
 ##Summary
 
