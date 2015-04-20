@@ -4,6 +4,7 @@
 
 * Write recursive methods
 * Implement simple mathematical algorithms in Ruby
+* Writing good tests to handle edge cases in your code.
 
 ##Summary
 
@@ -31,7 +32,7 @@ Keep in mind that if you try to create a team from zero people, there are zero w
 
 Write a recursive method called `choose_team(n, k)` that implements this formula and use this method to find how many ways there are to assign all 18 of you into pairs. (You may be quite surprised by this result). How about teams of 3?
 
-Here are a few values of `C(n,k)` that you can use to write tests for your code to verify your method works.
+Here are a few values of `C(n,k)` that you can use to write additional tests for your code to verify your method works.
 
 * `C(6,2)` = 15
 * `C(6,3)` = 20
