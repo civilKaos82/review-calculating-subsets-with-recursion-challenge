@@ -1,14 +1,15 @@
 require_relative '../calculate_subsets'
 
-describe "Calculating Subsets" do
-
-  it "calculates a subset of 1 as the same as the given team size" do
-    expect(choose_team(18, 1)).to eq(18)
+describe 'calculating the number of subsets' do
+  it 'zero subsets if zero options to choose from' do
+    expect(subset_count(0, 5)).to be_zero
   end
 
-  it "calculates a subset of a given team of 0 people as 0" do
-    expect(choose_team(0, 5)).to eq(0)
+  it 'zero subsets of size zero' do
+    expect(subset_count(5, 0)).to be_zero
   end
 
-  # add more tests here
+  it 'number of size-one subsets is equal to the number of options' do
+    expect(subset_count(18, 1)).to eq 18
+  end
 end
