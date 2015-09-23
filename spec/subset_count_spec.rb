@@ -1,4 +1,4 @@
-require_relative '../calculate_subsets'
+require_relative '../subset_count'
 
 describe 'calculating the number of subsets' do
   it 'zero subsets if zero options to choose from' do
