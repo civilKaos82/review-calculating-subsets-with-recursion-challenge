@@ -1,4 +1,4 @@
-require_relative 'calculate_subsets'
+require_relative '../calculate_subsets'
 
 describe "Calculating Subsets" do
 
