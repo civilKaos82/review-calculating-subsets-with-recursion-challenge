@@ -1,4 +1,4 @@
-require_relative 'recursive_methods'
+require_relative 'calculate_subsets'
 
 describe "Calculating Subsets" do
 
