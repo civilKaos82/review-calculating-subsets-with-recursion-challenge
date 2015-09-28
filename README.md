@@ -1,45 +1,55 @@
-# Review Calculating Subsets With Recursion
+# Algorithm Drill: Calculating Count of Subsets
 
-##Learning Competencies
+## Summary
+If we had five crayons, how many unique groups of three could we make?  If we had ten letters, how many unique combinations of four could we make?  If we had twelve players, how many unique teams of seven could we make?
 
-* Write recursive methods
-* Implement simple mathematical algorithms in Ruby
-* Writing good tests to handle edge cases in your code.
+More generically, given a set of *n* options, how many unique *k*-sized subsets could we make?
 
-##Summary
 
-When you have a set of **n people**, how many ways are there to choose a team of **k members**, technically speaking, a k-element subset? I.e., if we have 18 students and need to make teams of 3, and never want students to be in the same exact team again, how many different combinations of teams can we create?
+### A Function for Calculating the Number of Subsets
+We're going to define a function that we'll later translate into a Ruby method.  We'll represent our function as `f(n, k)`.  `n` represents the number of options we have, and `k` represents the size of each subset.  To determine how many unique groups of three we could make from five crayons, we'd have `f(5, 3)`.  Given ten letters, to determine how many unique combinations of four we could make, we'd have `f(10, 4)`.  Do we see how this could translate to a method definition?
 
-##Releases
+```
+f(n, k)  = f(n - 1, k - 1) + f(n - 1, k)
 
-###Release 0 : Defining the Equation
+f(5, 3)  = f(4, 2) + f(4, 3)
+f(10, 4) = f(9, 3) + f(9, 4)
+```
+*Figure 1*. Generic formula for `f(n, k)` with two examples.
 
-It's actually kind of complicated when you have a big group, even if we ignore ordering! Let's look at the formula for doing this:
+We know that our function needs two inputs:  `n` and `k`.  But what do we do with those inputs?  Figure 1 shows the calculations that we do with them.  Let's take a minute to review both the general formula and how it would be applied to the specific situations we've been discussing.  What type of algorithm does this look like?
 
-Let `C(n,k)` represent the number of ways to choose a team of `k` from a set of `n`.
 
-*So, `C(n,k)` for the student teams example above would be: `C(18,3)`.*
+### Known Numbers of Subsets
+```
+f(0, 5) = 0
+f(3, 0) = 0
+f(7, 1) = 7
+```
+*Figure 2*. Known values for specific input conditions.
 
-The simplest case would be when we are just having students work individually in teams of 1. How many teams of 1 can be created from a group of 18? This is simple. It's 18 teams of 1 of course! The formula would read: `C(18,1) = 18`. And in general, `C(n,1) = n`.
+There are some conditions where we know how many subsets we can calculate based on the inputs.  These conditions are shown in Figure 2 and detailed in the following points.
 
-But things get more complicated when you start making teams of 2. You can have all kinds of combinations of different people together. Luckily, this problem can be solved recursively!
+- If there are zero options, we can make zero subsets.
+- We can make zero subsets of size zero.
+- If we're trying to make subsets of size one, then we can make as many subsets as there are options.
 
-The general formula for `C(n,k)` is given by the recursive equation `C(n,k) = C(n-1,k-1) + C(n-1,k)`.
 
-Keep in mind that if you try to create a team from zero people, there are zero ways to do this. IE `C(0,k) = 0` because the number of ways to choose k people from 0 is 0.
+## Releases
+### Release 0: Translate the Function to Ruby
+```ruby
+subset_count(0, 5)
+# => 0
+subset_count(6, 2)
+# => 15
+subset_count(6, 3)
+# => 20
+subset_count(24, 4)
+# => 10626
+```
 
-###Release 1 : Use Ruby to solve the problem
+Write a `subset_count` method that implements the function we defined in the *Summary*.  Our method should accept two arguments, the number of options and the subset size, and it should return the number of unique combinations of the subset size that can be made from the number of options (see Figure 3).  Tests have been written to describe the known conditions (e.g., when there are zero options).  We'll need to write tests for other use cases.
 
-Write a recursive method called `choose_team(n, k)` that implements this formula and use this method to find how many ways there are to assign all 18 of you into pairs. (You may be quite surprised by this result). How about teams of 3?
 
-Here are a few values of `C(n,k)` that you can use to write additional tests for your code to verify your method works.
-
-* `C(6,2)` = 15
-* `C(6,3)` = 20
-* `C(24,4)`= 10626
-
-##Optimize Your Learning
-
-In English, explain why `C(n,k) = C(n-1,k-1) + C(n-1,k)?`. Use an example (like picking accountability groups) to illustrate your explanation
-
-##Resources
+## Conclusion
+Given a real-world function, we were required to translate it into Ruby.  When developing an algorithm, it's sometimes helpful to understand how we would solve the problem in the real world and then translate our process into Ruby.
