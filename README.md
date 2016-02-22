@@ -1,7 +1,7 @@
 # Algorithm Drill: Calculating Count of Subsets
 
 ## Summary
-If we had five crayons, how many unique groups of three could we make?  If we had ten letters, how many unique combinations of four could we make?  If we had twelve players, how many unique teams of seven could we make?
+If we had five pens, how many unique groups of three could we make?  If we had ten letters, how many unique combinations of four could we make?  If we had twelve players, how many unique teams of seven could we make?
 
 More generically, given a set of *n* options, how many unique *k*-sized subsets could we make?
 
