@@ -5,8 +5,8 @@ describe 'calculating the number of subsets' do
     expect(subset_count(0, 5)).to be_zero
   end
 
-  it 'zero subsets of size zero' do
-    expect(subset_count(5, 0)).to be_zero
+  it 'one subset of size zero' do
+    expect(subset_count(5, 0)).to eq 1
   end
 
   it 'number of size-one subsets is equal to the number of options' do

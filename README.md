@@ -23,7 +23,7 @@ We know that our function needs two inputs:  `n` and `k`.  But what do we do wit
 ### Known Numbers of Subsets
 ```
 f(0, 5) = 0
-f(3, 0) = 0
+f(3, 0) = 1
 f(7, 1) = 7
 ```
 *Figure 2*. Known values for specific input conditions.
@@ -31,7 +31,7 @@ f(7, 1) = 7
 There are some conditions where we know how many subsets we can calculate based on the inputs.  These conditions are shown in Figure 2 and detailed in the following points.
 
 - If there are zero options, we can make zero subsets.
-- We can make zero subsets of size zero.
+- We can always make one subset of size zero, the empty set.
 - If we're trying to make subsets of size one, then we can make as many subsets as there are options.
 
 
